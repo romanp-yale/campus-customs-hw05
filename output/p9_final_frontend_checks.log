@@ -1,0 +1,19 @@
+
+> campus-customs-dashboard@1.0.0 test
+> vitest run --run
+
+
+ RUN  v3.2.7 C:/Users/Roman/Documents/SOM Coursework/AI/Workspace/homework/hw-05/frontend
+
+ ✓ src/App.test.tsx (6 tests) 4694ms
+   ✓ Dashboard behavior (test-only API fixtures) > renders real-shaped shop data and changes the selected ticket  370ms
+   ✓ Dashboard behavior (test-only API fixtures) > requires human review and updates cash after a payment decision  636ms
+   ✓ Dashboard behavior (test-only API fixtures) > requires a real quote for purchase confirmation and does not change cash  585ms
+   ✓ Dashboard behavior (test-only API fixtures) > polls tool evidence and contributions, then marks resolution from stored status  2247ms
+   ✓ Dashboard behavior (test-only API fixtures) > requires actual receipt attestation and a quantity within the paid order  683ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  16:28:01
+   Duration  7.97s (transform 146ms, setup 0ms, collect 578ms, tests 4.69s, environment 1.91s, prepare 252ms)
+

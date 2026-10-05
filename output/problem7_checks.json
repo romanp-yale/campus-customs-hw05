@@ -1,0 +1,75 @@
+{
+  "problem": 7,
+  "verbatim_prompt_verified": true,
+  "http_suite": {
+    "tests": 3,
+    "passed": true,
+    "log": "p7_http_checks.log"
+  },
+  "live_read_routes": {
+    "tickets": {
+      "tickets": [
+        {
+          "id": 101,
+          "type": "customer_order",
+          "requester": "Tauhid Zaman",
+          "subject": "Bulldog tee",
+          "sku": "CC-TEE-WHITE",
+          "size": "S",
+          "qty": 1,
+          "lease_id": null,
+          "invoice_id": 501,
+          "status": "open",
+          "notes": "Needs a tee in size S.",
+          "created_at": "2026-08-31T09:15:00-04:00"
+        },
+        {
+          "id": 102,
+          "type": "rent_notice",
+          "requester": "Elm City Properties",
+          "subject": "Rent due",
+          "sku": null,
+          "size": null,
+          "qty": null,
+          "lease_id": 1,
+          "invoice_id": null,
+          "status": "open",
+          "notes": "Email: shop rent due in 2 days.",
+          "created_at": "2026-08-31T11:05:00-04:00"
+        },
+        {
+          "id": 103,
+          "type": "price_override",
+          "requester": "Yale AI Club",
+          "subject": "Bulk hoodie discount",
+          "sku": "CC-HOOD-NAVY",
+          "size": "M",
+          "qty": 20,
+          "lease_id": null,
+          "invoice_id": null,
+          "status": "open",
+          "notes": "Student org wants 20 hoodies, size M, asking for a bulk discount.",
+          "created_at": "2026-08-31T16:55:00-04:00"
+        }
+      ]
+    },
+    "cash": {
+      "name": "checking",
+      "balance": 3400.0,
+      "date": "2026-08-31"
+    }
+  },
+  "database_sha256": {
+    "campus_customs.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+    "campus_customs_new.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a"
+  },
+  "paid_ai_calls": 0,
+  "audit_preserved": true,
+  "regression_suite": {
+    "tests": 10,
+    "passed": true,
+    "log": "p7_regression.log"
+  },
+  "total_tests_passed": 13,
+  "audit_entries_after_checks": 1820
+}

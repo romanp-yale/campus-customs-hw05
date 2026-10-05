@@ -1,0 +1,25 @@
+{
+  "original_unchanged": true,
+  "expected_sections_unchanged": true,
+  "checking_matches_sqlite": true,
+  "checking_balance": 160.0,
+  "ticket_statuses": [
+    [
+      101,
+      "resolved"
+    ],
+    [
+      102,
+      "resolved"
+    ],
+    [
+      103,
+      "resolved"
+    ]
+  ],
+  "complete": true,
+  "screenshots_embedded": 3,
+  "audit_entries_preserved": 2945,
+  "input_token_limit": 16000,
+  "prompt_logged_verbatim": true
+}

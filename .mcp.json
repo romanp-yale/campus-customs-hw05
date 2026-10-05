@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "campus_customs": {
+      "type": "stdio",
+      "command": "python",
+      "args": [
+        "mcp_server/server.py"
+      ],
+      "cwd": "."
+    }
+  }
+}

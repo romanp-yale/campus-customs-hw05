@@ -1,0 +1,16 @@
+{
+  "test_mode": "offline deterministic protocol responders with real in-memory MCP on disposable database copies; no paid AI calls",
+  "tests_run": 10,
+  "failures": 0,
+  "errors": 0,
+  "production_databases_unchanged": true,
+  "database_sha256_before": {
+    "C:\\Users\\Roman\\Documents\\SOM Coursework\\AI\\Workspace\\homework\\hw-05\\data\\campus_customs.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+    "C:\\Users\\Roman\\Documents\\SOM Coursework\\AI\\Workspace\\homework\\hw-05\\data\\campus_customs_new.db": "4797aa77efd027a71cdac0260b29e8f3c642362c3e30e36537d1633b4201db33"
+  },
+  "database_sha256_after": {
+    "C:\\Users\\Roman\\Documents\\SOM Coursework\\AI\\Workspace\\homework\\hw-05\\data\\campus_customs.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+    "C:\\Users\\Roman\\Documents\\SOM Coursework\\AI\\Workspace\\homework\\hw-05\\data\\campus_customs_new.db": "4797aa77efd027a71cdac0260b29e8f3c642362c3e30e36537d1633b4201db33"
+  },
+  "passed": true
+}

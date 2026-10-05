@@ -1,0 +1,12 @@
+{
+  "model": "gpt-6-luna",
+  "provider": "OpenAI through Portkey",
+  "verified_on": "2026-10-05",
+  "source": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+  "standard_input_usd_per_million": "0.10",
+  "standard_output_usd_per_million": "0.50",
+  "configured_conservative_input_ceiling": "0.30",
+  "configured_conservative_output_ceiling": "1.10",
+  "note": "Conservative model-token estimate permits published cache-write, fast-mode and regional multipliers. Portkey account/platform charges are separate; these are not a billing invoice.",
+  "per_run_estimated_cost_limit_usd": "1.00"
+}

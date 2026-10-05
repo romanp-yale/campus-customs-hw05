@@ -1,0 +1,73 @@
+[
+  {
+    "action": "approve invoice 501",
+    "before": 3400.0,
+    "after": 2560.0,
+    "result": {
+      "id": 1,
+      "kind": "invoice",
+      "ref_id": 501,
+      "amount": 840.0,
+      "account": "checking",
+      "paid_at": "2026-08-31",
+      "approved_by": "Roman"
+    }
+  },
+  {
+    "result": {
+      "id": 1,
+      "ticket_id": 101,
+      "vendor_id": 1,
+      "sku": "CC-TEE-WHITE",
+      "size": "S",
+      "qty": 1,
+      "unit_cost": 8.0,
+      "status": "paid",
+      "created_at": "2026-08-31",
+      "confirmed_by": "Roman",
+      "received_qty": 0,
+      "funding_invoice_id": 501
+    },
+    "action": "user-authorized simulated supplier quote and invoice coverage"
+  },
+  {
+    "result": {
+      "purchase_order": {
+        "id": 1,
+        "ticket_id": 101,
+        "vendor_id": 1,
+        "sku": "CC-TEE-WHITE",
+        "size": "S",
+        "qty": 1,
+        "unit_cost": 8.0,
+        "status": "received",
+        "created_at": "2026-08-31",
+        "confirmed_by": "Roman",
+        "received_qty": 1,
+        "funding_invoice_id": 501
+      },
+      "inventory": {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "qty": 1,
+        "location": "Aisle B"
+      }
+    },
+    "action": "user-authorized simulated receipt"
+  },
+  {
+    "action": "approve rent for lease 1",
+    "before": 2560.0,
+    "after": 160.0,
+    "result": {
+      "id": 2,
+      "kind": "rent",
+      "ref_id": 1,
+      "amount": 2400.0,
+      "account": "checking",
+      "paid_at": "2026-08-31",
+      "approved_by": "Roman"
+    }
+  }
+]

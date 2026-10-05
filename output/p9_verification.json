@@ -1,0 +1,21 @@
+{
+  "original_unchanged": true,
+  "expected_sections_unchanged": true,
+  "checking_matches_sqlite": true,
+  "checking_balance": 160.0,
+  "ticket_statuses": [
+    [
+      101,
+      "resolved"
+    ],
+    [
+      102,
+      "resolved"
+    ],
+    [
+      103,
+      "resolved"
+    ]
+  ],
+  "complete": true
+}

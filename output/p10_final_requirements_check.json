@@ -1,0 +1,34 @@
+{
+  "original_unchanged": true,
+  "expected_sections_unchanged": true,
+  "checking_matches_sqlite": true,
+  "checking_balance": 160.0,
+  "ticket_statuses": [
+    [
+      101,
+      "resolved"
+    ],
+    [
+      102,
+      "resolved"
+    ],
+    [
+      103,
+      "resolved"
+    ]
+  ],
+  "complete": true,
+  "screenshots_embedded": 3,
+  "audit_entries_preserved": 2945,
+  "input_token_limit": 16000,
+  "prompt_logged_verbatim": true,
+  "verified_at_utc": "2026-10-05T20:41:59.700204+00:00",
+  "backend_tests_passed": 17,
+  "frontend_tests_passed": 6,
+  "production_build_passed": true,
+  "paid_model_calls_during_review": 0,
+  "limitations": [
+    "Ticket 101 quote, invoice coverage and receipt were explicitly authorized simulation.",
+    "Ticket 103 resolved by decline, not fulfillment."
+  ]
+}

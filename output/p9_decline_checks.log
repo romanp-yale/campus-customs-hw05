@@ -1,0 +1,127 @@
+test_explicit_decline_does_not_spend_or_fulfill (backend.tests.test_problem5.BusinessSafetyTests.test_explicit_decline_does_not_spend_or_fulfill) ... [10/05/26 16:20:32] Error calling tool 'decline_ticket_request'                
+                    ┌─────────── Traceback (most recent call last) ───────────┐
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \server\server.py:1467 in call_tool                     │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \tools\base.py:440 in _run                              │
+                    │                                                         │
+                    │                 ... 9 frames hidden ...                 │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\serve │
+                    │ r.py:65 in decline_ticket_request                       │
+                    │                                                         │
+                    │    62 │   This is a shop decision, not fulfillment, cus │
+                    │    63 │   Refuse pending payment requests and committed │
+                    │    64 │   """                                           │
+                    │ >  65 │   return operations.decline_ticket_request(tick │
+                    │    66                                                   │
+                    │    67                                                   │
+                    │    68 @mcp.tool()                                       │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:271 in decline_ticket_request                  │
+                    │                                                         │
+                    │   268 │   with connection(True) as conn:                │
+                    │   269 │   │   t=ticket(conn,ticket_id)                  │
+                    │   270 │   │   if t['type']!='price_override':           │
+                    │ > 271 │   │   │   raise ValueError('Only a price-overri │
+                    │       tool.')                                           │
+                    │   272 │   │   one(conn,"SELECT * FROM board_drafts WHER │
+                    │       audience='customer'",(customer_draft_id,ticket_id │
+                    │   273 │   │   if conn.execute("SELECT 1 FROM approval_r │
+                    │       ('pending','approved')",(ticket_id,)).fetchone(): │
+                    │   274 │   │   │   raise ValueError('Resolve pending pay │
+                    │       ticket.')                                         │
+                    └─────────────────────────────────────────────────────────┘
+                    ValueError: Only a price-override request can be declined  
+                    with this tool.                                            
+                    Error calling tool 'decline_ticket_request'                
+                    ┌─────────── Traceback (most recent call last) ───────────┐
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \server\server.py:1467 in call_tool                     │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \tools\base.py:440 in _run                              │
+                    │                                                         │
+                    │                ... 10 frames hidden ...                 │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:272 in decline_ticket_request                  │
+                    │                                                         │
+                    │   269 │   │   t=ticket(conn,ticket_id)                  │
+                    │   270 │   │   if t['type']!='price_override':           │
+                    │   271 │   │   │   raise ValueError('Only a price-overri │
+                    │       tool.')                                           │
+                    │ > 272 │   │   one(conn,"SELECT * FROM board_drafts WHER │
+                    │       audience='customer'",(customer_draft_id,ticket_id │
+                    │   273 │   │   if conn.execute("SELECT 1 FROM approval_r │
+                    │       ('pending','approved')",(ticket_id,)).fetchone(): │
+                    │   274 │   │   │   raise ValueError('Resolve pending pay │
+                    │       ticket.')                                         │
+                    │   275 │   │   if conn.execute("SELECT 1 FROM purchase_o │
+                    │       status IN ('confirmed','paid')",(ticket_id,)).fet │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:49 in one                                      │
+                    │                                                         │
+                    │    46 def one(conn, sql, params=()):                    │
+                    │    47 │   row = conn.execute(sql, params).fetchone()    │
+                    │    48 │   if row is None:                               │
+                    │ >  49 │   │   raise ValueError("Required database recor │
+                    │    50 │   return dict(row)                              │
+                    │    51                                                   │
+                    │    52                                                   │
+                    └─────────────────────────────────────────────────────────┘
+                    ValueError: Required database record is missing.           
+                    Error calling tool 'fulfill_ticket_order'                  
+                    ┌─────────── Traceback (most recent call last) ───────────┐
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \server\server.py:1467 in call_tool                     │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \tools\base.py:440 in _run                              │
+                    │                                                         │
+                    │                ... 10 frames hidden ...                 │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:234 in fulfill_ticket_order                    │
+                    │                                                         │
+                    │   231                                                   │
+                    │   232 def fulfill_ticket_order(ticket_id: int):         │
+                    │   233 │   with connection(True) as conn:                │
+                    │ > 234 │   │   t=ticket(conn,ticket_id)                  │
+                    │   235 │   │   if t["type"] not in ("customer_order","pr │
+                    │   236 │   │   │   raise ValueError("Ticket is not a mer │
+                    │   237 │   │   if not isinstance(t["qty"],int) or t["qty │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:63 in ticket                                   │
+                    │                                                         │
+                    │    60 def ticket(conn, ticket_id):                      │
+                    │    61 │   row = one(conn, "SELECT * FROM tickets WHERE  │
+                    │    62 │   if row["status"] != "open":                   │
+                    │ >  63 │   │   raise ValueError("Ticket is not open.")   │
+                    │    64 │   return row                                    │
+                    │    65                                                   │
+                    │    66                                                   │
+                    └─────────────────────────────────────────────────────────┘
+                    ValueError: Ticket is not open.                            
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.463s
+
+OK

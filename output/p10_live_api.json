@@ -1,0 +1,21 @@
+{
+  "receipt_route_loaded": true,
+  "checking_balance": 3400.0,
+  "tickets": [
+    {
+      "id": 101,
+      "status": "open"
+    },
+    {
+      "id": 102,
+      "status": "open"
+    },
+    {
+      "id": 103,
+      "status": "open"
+    }
+  ],
+  "pending_payments": 2,
+  "actual_paid_receipts": null,
+  "checked_at_utc": "2026-10-05T20:16:46.7959077Z"
+}

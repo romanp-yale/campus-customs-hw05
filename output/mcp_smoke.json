@@ -1,0 +1,271 @@
+{
+  "tested_at_utc": "2026-10-05T20:11:02.882538+00:00",
+  "fastmcp_version": "4.0.11",
+  "config": ".mcp.json",
+  "transport": "stdio subprocess",
+  "database": "data/campus_customs_new.db",
+  "prompt_execution": "Exact assistant-authored test prompts mapped to direct MCP calls; no LLM or model API used.",
+  "tests": [
+    {
+      "prompt": "Call get_ticket_101_tee_order_context with no arguments and return its database output for ticket 101 without adding assumptions.",
+      "tool_name": "get_ticket_101_tee_order_context",
+      "arguments": {},
+      "returned_output": {
+        "ticket": {
+          "id": 101,
+          "type": "customer_order",
+          "requester": "Tauhid Zaman",
+          "subject": "Bulldog tee",
+          "sku": "CC-TEE-WHITE",
+          "size": "S",
+          "qty": 1,
+          "lease_id": null,
+          "invoice_id": 501,
+          "status": "open",
+          "notes": "Needs a tee in size S.",
+          "created_at": "2026-08-31T09:15:00-04:00"
+        },
+        "desk": [
+          {
+            "date_today": "2026-08-31",
+            "notes": null
+          }
+        ],
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400.0,
+            "date": "2026-08-31"
+          }
+        ],
+        "inventory": [
+          {
+            "sku": "CC-TEE-WHITE",
+            "name": "Classic Bulldog Tee",
+            "size": "S",
+            "qty": 0,
+            "location": "Aisle B"
+          }
+        ],
+        "pricing": [
+          {
+            "sku": "CC-TEE-WHITE",
+            "unit_cost": 8.0,
+            "list_price": 28.0
+          }
+        ],
+        "linked_invoice": [
+          {
+            "id": 501,
+            "vendor_id": 1,
+            "amount": 840.0,
+            "due_date": "2026-08-28",
+            "status": "open",
+            "description": "Rush reprint CC-TEE-WHITE S"
+          }
+        ],
+        "linked_vendor": [
+          {
+            "id": 1,
+            "name": "Bulldog Print Co",
+            "specialty": "apparel reprint",
+            "lead_days": 5
+          }
+        ],
+        "vendor_open_invoices": [
+          {
+            "id": 501,
+            "vendor_id": 1,
+            "amount": 840.0,
+            "due_date": "2026-08-28",
+            "status": "open",
+            "description": "Rush reprint CC-TEE-WHITE S"
+          }
+        ]
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ticket\":{\"id\":101,\"type\":\"customer_order\",\"requester\":\"Tauhid Zaman\",\"subject\":\"Bulldog tee\",\"sku\":\"CC-TEE-WHITE\",\"size\":\"S\",\"qty\":1,\"lease_id\":null,\"invoice_id\":501,\"status\":\"open\",\"notes\":\"Needs a tee in size S.\",\"created_at\":\"2026-08-31T09:15:00-04:00\"},\"desk\":[{\"date_today\":\"2026-08-31\",\"notes\":null}],\"cash_accounts\":[{\"name\":\"checking\",\"balance\":3400.0,\"date\":\"2026-08-31\"}],\"inventory\":[{\"sku\":\"CC-TEE-WHITE\",\"name\":\"Classic Bulldog Tee\",\"size\":\"S\",\"qty\":0,\"location\":\"Aisle B\"}],\"pricing\":[{\"sku\":\"CC-TEE-WHITE\",\"unit_cost\":8.0,\"list_price\":28.0}],\"linked_invoice\":[{\"id\":501,\"vendor_id\":1,\"amount\":840.0,\"due_date\":\"2026-08-28\",\"status\":\"open\",\"description\":\"Rush reprint CC-TEE-WHITE S\"}],\"linked_vendor\":[{\"id\":1,\"name\":\"Bulldog Print Co\",\"specialty\":\"apparel reprint\",\"lead_days\":5}],\"vendor_open_invoices\":[{\"id\":501,\"vendor_id\":1,\"amount\":840.0,\"due_date\":\"2026-08-28\",\"status\":\"open\",\"description\":\"Rush reprint CC-TEE-WHITE S\"}]}"
+        }
+      ],
+      "verification": {
+        "matches_working_database": true,
+        "method": "Exact equality with independently queried full expected rows, keys, values, nulls, ordering, and empty lists."
+      }
+    },
+    {
+      "prompt": "Call get_ticket_102_rent_context with no arguments and return its database output for ticket 102 without adding assumptions.",
+      "tool_name": "get_ticket_102_rent_context",
+      "arguments": {},
+      "returned_output": {
+        "ticket": {
+          "id": 102,
+          "type": "rent_notice",
+          "requester": "Elm City Properties",
+          "subject": "Rent due",
+          "sku": null,
+          "size": null,
+          "qty": null,
+          "lease_id": 1,
+          "invoice_id": null,
+          "status": "open",
+          "notes": "Email: shop rent due in 2 days.",
+          "created_at": "2026-08-31T11:05:00-04:00"
+        },
+        "desk": [
+          {
+            "date_today": "2026-08-31",
+            "notes": null
+          }
+        ],
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400.0,
+            "date": "2026-08-31"
+          }
+        ],
+        "lease": [
+          {
+            "id": 1,
+            "space_name": "Chapel Street shop",
+            "landlord": "Elm City Properties",
+            "monthly_rent": 2400.0,
+            "next_due": "2026-09-02",
+            "notes": null
+          }
+        ],
+        "payments": []
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ticket\":{\"id\":102,\"type\":\"rent_notice\",\"requester\":\"Elm City Properties\",\"subject\":\"Rent due\",\"sku\":null,\"size\":null,\"qty\":null,\"lease_id\":1,\"invoice_id\":null,\"status\":\"open\",\"notes\":\"Email: shop rent due in 2 days.\",\"created_at\":\"2026-08-31T11:05:00-04:00\"},\"desk\":[{\"date_today\":\"2026-08-31\",\"notes\":null}],\"cash_accounts\":[{\"name\":\"checking\",\"balance\":3400.0,\"date\":\"2026-08-31\"}],\"lease\":[{\"id\":1,\"space_name\":\"Chapel Street shop\",\"landlord\":\"Elm City Properties\",\"monthly_rent\":2400.0,\"next_due\":\"2026-09-02\",\"notes\":null}],\"payments\":[]}"
+        }
+      ],
+      "verification": {
+        "matches_working_database": true,
+        "method": "Exact equality with independently queried full expected rows, keys, values, nulls, ordering, and empty lists."
+      }
+    },
+    {
+      "prompt": "Call get_ticket_103_hoodie_discount_context with no arguments and return its database output for ticket 103 without adding assumptions.",
+      "tool_name": "get_ticket_103_hoodie_discount_context",
+      "arguments": {},
+      "returned_output": {
+        "ticket": {
+          "id": 103,
+          "type": "price_override",
+          "requester": "Yale AI Club",
+          "subject": "Bulk hoodie discount",
+          "sku": "CC-HOOD-NAVY",
+          "size": "M",
+          "qty": 20,
+          "lease_id": null,
+          "invoice_id": null,
+          "status": "open",
+          "notes": "Student org wants 20 hoodies, size M, asking for a bulk discount.",
+          "created_at": "2026-08-31T16:55:00-04:00"
+        },
+        "desk": [
+          {
+            "date_today": "2026-08-31",
+            "notes": null
+          }
+        ],
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400.0,
+            "date": "2026-08-31"
+          }
+        ],
+        "inventory": [
+          {
+            "sku": "CC-HOOD-NAVY",
+            "name": "Basic Hoodie Big Yale",
+            "size": "M",
+            "qty": 8,
+            "location": "Aisle A"
+          }
+        ],
+        "pricing": [
+          {
+            "sku": "CC-HOOD-NAVY",
+            "unit_cost": 22.0,
+            "list_price": 58.0
+          }
+        ],
+        "vendors": [
+          {
+            "id": 1,
+            "name": "Bulldog Print Co",
+            "specialty": "apparel reprint",
+            "lead_days": 5
+          },
+          {
+            "id": 2,
+            "name": "Elm City Gifts",
+            "specialty": "mugs and small goods",
+            "lead_days": 3
+          },
+          {
+            "id": 3,
+            "name": "QuickShip CT",
+            "specialty": "local courier",
+            "lead_days": 1
+          }
+        ],
+        "open_invoices": [
+          {
+            "id": 501,
+            "vendor_id": 1,
+            "amount": 840.0,
+            "due_date": "2026-08-28",
+            "status": "open",
+            "description": "Rush reprint CC-TEE-WHITE S"
+          }
+        ]
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"ticket\":{\"id\":103,\"type\":\"price_override\",\"requester\":\"Yale AI Club\",\"subject\":\"Bulk hoodie discount\",\"sku\":\"CC-HOOD-NAVY\",\"size\":\"M\",\"qty\":20,\"lease_id\":null,\"invoice_id\":null,\"status\":\"open\",\"notes\":\"Student org wants 20 hoodies, size M, asking for a bulk discount.\",\"created_at\":\"2026-08-31T16:55:00-04:00\"},\"desk\":[{\"date_today\":\"2026-08-31\",\"notes\":null}],\"cash_accounts\":[{\"name\":\"checking\",\"balance\":3400.0,\"date\":\"2026-08-31\"}],\"inventory\":[{\"sku\":\"CC-HOOD-NAVY\",\"name\":\"Basic Hoodie Big Yale\",\"size\":\"M\",\"qty\":8,\"location\":\"Aisle A\"}],\"pricing\":[{\"sku\":\"CC-HOOD-NAVY\",\"unit_cost\":22.0,\"list_price\":58.0}],\"vendors\":[{\"id\":1,\"name\":\"Bulldog Print Co\",\"specialty\":\"apparel reprint\",\"lead_days\":5},{\"id\":2,\"name\":\"Elm City Gifts\",\"specialty\":\"mugs and small goods\",\"lead_days\":3},{\"id\":3,\"name\":\"QuickShip CT\",\"specialty\":\"local courier\",\"lead_days\":1}],\"open_invoices\":[{\"id\":501,\"vendor_id\":1,\"amount\":840.0,\"due_date\":\"2026-08-28\",\"status\":\"open\",\"description\":\"Rush reprint CC-TEE-WHITE S\"}]}"
+        }
+      ],
+      "verification": {
+        "matches_working_database": true,
+        "method": "Exact equality with independently queried full expected rows, keys, values, nulls, ordering, and empty lists."
+      }
+    }
+  ],
+  "discovered_tools": [
+    "get_ticket_101_tee_order_context",
+    "get_ticket_102_rent_context",
+    "get_ticket_103_hoodie_discount_context",
+    "read_shop_board",
+    "request_payment",
+    "authorize_payment",
+    "execute_approved_payment",
+    "save_board_draft",
+    "draft_purchase_order",
+    "record_discount_decision",
+    "fulfill_ticket_order",
+    "close_paid_rent_ticket",
+    "confirm_purchase_order",
+    "receive_purchase_order",
+    "approve_and_pay",
+    "reset_working_database"
+  ],
+  "database_sha256_before": {
+    "original": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+    "working": "4797aa77efd027a71cdac0260b29e8f3c642362c3e30e36537d1633b4201db33"
+  },
+  "database_sha256_after": {
+    "original": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+    "working": "4797aa77efd027a71cdac0260b29e8f3c642362c3e30e36537d1633b4201db33"
+  },
+  "databases_unchanged": true,
+  "all_passed": true
+}

@@ -1,0 +1,639 @@
+test_agent_cycle_role_and_budget_boundaries (test_problem5.BusinessSafetyTests.test_agent_cycle_role_and_budget_boundaries) ... ok
+test_approval_cash_rent_replay_and_dates (test_problem5.BusinessSafetyTests.test_approval_cash_rent_replay_and_dates) ... [10/05/26 14:32:00] Error calling tool 'execute_approved_payment'              
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:129 in execute_approved_payment                |
+                    |                                                         |
+                    |   126 def execute_approved_payment(request_id: int, app |
+                    |   127     require_human(approved_by, approval_secret)   |
+                    |   128     with connection(True) as conn:                |
+                    | > 129         return _execute_payment(conn, request_id) |
+                    |   130                                                   |
+                    |   131                                                   |
+                    |   132 def approve_and_pay(request_id: int, approved: bo |
+                    |       str):                                             |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:153 in _execute_payment                        |
+                    |                                                         |
+                    |   150     if req["status"] == "paid":                   |
+                    |   151         return one(conn, "SELECT * FROM payments  |
+                    |   152     if req["status"] != "approved" or not req["ap |
+                    | > 153         raise PermissionError("Payment requires a |
+                    |   154     ticket(conn, req["ticket_id"])                |
+                    |   155     amount = money(req["amount"])                 |
+                    |   156     account = one(conn, "SELECT * FROM cash_accou |
+                    +---------------------------------------------------------+
+                    PermissionError: Payment requires a stored human approval. 
+                    Error calling tool 'authorize_payment'                     
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:117 in authorize_payment                       |
+                    |                                                         |
+                    |   114                                                   |
+                    |   115                                                   |
+                    |   116 def authorize_payment(request_id: int, approved:  |
+                    |       approval_secret: str):                            |
+                    | > 117     require_human(approved_by,approval_secret)    |
+                    |   118     with connection(True) as conn:                |
+                    |   119         req = one(conn, "SELECT * FROM approval_r |
+                    |   120         if req["status"] != "pending":            |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:111 in require_human                           |
+                    |                                                         |
+                    |   108 def require_human(approved_by: str, approval_secr |
+                    |   109     expected = os.getenv("CAMPUS_HUMAN_APPROVAL_K |
+                    |   110     if not expected or not hmac.compare_digest(ex |
+                    | > 111         raise PermissionError("Human approval cre |
+                    |   112     if not approved_by.strip() or len(approved_by |
+                    |   113         raise ValueError("A human approver name i |
+                    |   114                                                   |
+                    +---------------------------------------------------------+
+                    PermissionError: Human approval credential is invalid or   
+                    not configured.                                            
+ok
+test_concurrent_payment_execution_only_charges_once (test_problem5.BusinessSafetyTests.test_concurrent_payment_execution_only_charges_once) ... ok
+test_discount_and_exact_size_stock_guard (test_problem5.BusinessSafetyTests.test_discount_and_exact_size_stock_guard) ... [10/05/26 14:32:01] Error calling tool 'record_discount_decision'              
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                 ... 9 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\serve |
+                    | r.py:105 in record_discount_decision                    |
+                    |                                                         |
+                    |   102     """Persist Boss's proposed price decision, bo |
+                    |   103     Does not change global list prices, add cash, |
+                    |   104     """                                           |
+                    | > 105     return operations.record_discount_decision(ti |
+                    |   106                                                   |
+                    |   107                                                   |
+                    |   108 @mcp.tool()                                       |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:226 in record_discount_decision                |
+                    |                                                         |
+                    |   223         quoted=conn.execute("SELECT MAX(unit_cost |
+                    |       ticket_id=? AND status!='draft'",(ticket_id,)).fe |
+                    |   224         floor=max(money(pricing["unit_cost"]),mon |
+                    |       Decimal(0))                                       |
+                    |   225         if price < floor or price > money(pricing |
+                    | > 226             raise ValueError("Price must cover st |
+                    |       without exceeding list price.")                   |
+                    |   227         conn.execute("INSERT INTO discount_decisi |
+                    |       CONFLICT(ticket_id) DO UPDATE SET                 |
+                    |       unit_price=excluded.unit_price,rationale=excluded |
+                    |       at",(ticket_id,float(price),rationale,shop_date(c |
+                    |   228         return one(conn,"SELECT * FROM discount_d |
+                    |       ticket_id=?",(ticket_id,))                        |
+                    |   229                                                   |
+                    +---------------------------------------------------------+
+                    ValueError: Price must cover stored cost and confirmed     
+                    supplier quotes without exceeding list price.              
+                    Error calling tool 'fulfill_ticket_order'                  
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                 ... 9 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\serve |
+                    | r.py:113 in fulfill_ticket_order                        |
+                    |                                                         |
+                    |   110     """Resolve a merchandise ticket only when exa |
+                    |   111     price override has a valid stored decision. D |
+                    |   112     """                                           |
+                    | > 113     return operations.fulfill_ticket_order(ticket |
+                    |   114                                                   |
+                    |   115                                                   |
+                    |   116 @mcp.tool()                                       |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:247 in fulfill_ticket_order                    |
+                    |                                                         |
+                    |   244                 raise ValueError("Pricing changed |
+                    |   245         stock=one(conn,"SELECT * FROM inventory W |
+                    |       size=?",(t["sku"],t["size"]))                     |
+                    |   246         if stock["qty"]<t["qty"]:                 |
+                    | > 247             raise ValueError("Insufficient exact- |
+                    |       count.")                                          |
+                    |   248         conn.execute("UPDATE inventory SET qty=qt |
+                    |       size=?",(t["qty"],t["sku"],t["size"]))            |
+                    |   249         conn.execute("UPDATE tickets SET status=' |
+                    |   250         return {"ticket":one(conn,"SELECT * FROM  |
+                    |       id=?",(ticket_id,)),"inventory":one(conn,"SELECT  |
+                    |       size=?",(t["sku"],t["size"]))}                    |
+                    +---------------------------------------------------------+
+                    ValueError: Insufficient exact-size stock; proposed        
+                    restocks do not count.                                     
+                    Error calling tool 'close_paid_rent_ticket'                
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:258 in close_paid_rent_ticket                  |
+                    |                                                         |
+                    |   255         t=ticket(conn,ticket_id)                  |
+                    |   256         if t["type"] != "rent_notice":            |
+                    |   257             raise ValueError("Ticket is not a ren |
+                    | > 258         one(conn,"SELECT * FROM approval_requests |
+                    |       status='paid'",(ticket_id,))                      |
+                    |   259         conn.execute("UPDATE tickets SET status=' |
+                    |   260         return one(conn,"SELECT * FROM tickets WH |
+                    |   261                                                   |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:48 in one                                      |
+                    |                                                         |
+                    |    45 def one(conn, sql, params=()):                    |
+                    |    46     row = conn.execute(sql, params).fetchone()    |
+                    |    47     if row is None:                               |
+                    | >  48         raise ValueError("Required database recor |
+                    |    49     return dict(row)                              |
+                    |    50                                                   |
+                    |    51                                                   |
+                    +---------------------------------------------------------+
+                    ValueError: Required database record is missing.           
+                    Error calling tool 'record_discount_decision'              
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                 ... 9 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\serve |
+                    | r.py:105 in record_discount_decision                    |
+                    |                                                         |
+                    |   102     """Persist Boss's proposed price decision, bo |
+                    |   103     Does not change global list prices, add cash, |
+                    |   104     """                                           |
+                    | > 105     return operations.record_discount_decision(ti |
+                    |   106                                                   |
+                    |   107                                                   |
+                    |   108 @mcp.tool()                                       |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:226 in record_discount_decision                |
+                    |                                                         |
+                    |   223         quoted=conn.execute("SELECT MAX(unit_cost |
+                    |       ticket_id=? AND status!='draft'",(ticket_id,)).fe |
+                    |   224         floor=max(money(pricing["unit_cost"]),mon |
+                    |       Decimal(0))                                       |
+                    |   225         if price < floor or price > money(pricing |
+                    | > 226             raise ValueError("Price must cover st |
+                    |       without exceeding list price.")                   |
+                    |   227         conn.execute("INSERT INTO discount_decisi |
+                    |       CONFLICT(ticket_id) DO UPDATE SET                 |
+                    |       unit_price=excluded.unit_price,rationale=excluded |
+                    |       at",(ticket_id,float(price),rationale,shop_date(c |
+                    |   228         return one(conn,"SELECT * FROM discount_d |
+                    |       ticket_id=?",(ticket_id,))                        |
+                    |   229                                                   |
+                    +---------------------------------------------------------+
+                    ValueError: Price must cover stored cost and confirmed     
+                    supplier quotes without exceeding list price.              
+ok
+test_drafts_quotes_vendor_block_receipt_and_fulfillment (test_problem5.BusinessSafetyTests.test_drafts_quotes_vendor_block_receipt_and_fulfillment) ... [10/05/26 14:32:03] Error calling tool 'request_payment'                       
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                 ... 9 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\serve |
+                    | r.py:65 in request_payment                              |
+                    |                                                         |
+                    |    62     using stored amounts. Purchase payments need  |
+                    |    63     This neither approves nor pays. A human must  |
+                    |    64     """                                           |
+                    | >  65     return operations.request_payment(ticket_id,  |
+                    |    66                                                   |
+                    |    67                                                   |
+                    |    68 @mcp.tool()                                       |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:100 in request_payment                         |
+                    |                                                         |
+                    |    97             ref_id = purchase_order_id            |
+                    |    98             obligation = one(conn, "SELECT * FROM |
+                    |       ticket_id=?", (ref_id,ticket_id))                 |
+                    |    99             if obligation["status"] != "confirmed |
+                    | > 100                 raise ValueError("A human must co |
+                    |       requesting purchase payment.")                    |
+                    |   101             amount, due = money(obligation["unit_ |
+                    |       obligation["created_at"]                          |
+                    |   102         if amount <= 0:                           |
+                    |   103             raise ValueError("Payment amount must |
+                    +---------------------------------------------------------+
+                    ValueError: A human must confirm the supplier and quote    
+                    before requesting purchase payment.                        
+                    Error calling tool 'execute_approved_payment'              
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:129 in execute_approved_payment                |
+                    |                                                         |
+                    |   126 def execute_approved_payment(request_id: int, app |
+                    |   127     require_human(approved_by, approval_secret)   |
+                    |   128     with connection(True) as conn:                |
+                    | > 129         return _execute_payment(conn, request_id) |
+                    |   130                                                   |
+                    |   131                                                   |
+                    |   132 def approve_and_pay(request_id: int, approved: bo |
+                    |       str):                                             |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:178 in _execute_payment                        |
+                    |                                                         |
+                    |   175         if obligation["status"]!="confirmed" or   |
+                    |       money(obligation["unit_cost"])*obligation["qty"]! |
+                    |       obligation["created_at"]!=req["obligation_date"]: |
+                    |   176             raise ValueError("Purchase order chan |
+                    |       paid.")                                           |
+                    |   177         if conn.execute("SELECT 1 FROM invoices W |
+                    |       status='open'",(obligation["vendor_id"],)).fetcho |
+                    | > 178             raise ValueError("Vendor cannot ship  |
+                    |       purchase payment refused.")                       |
+                    |   179         conn.execute("UPDATE purchase_order_draft |
+                    |       id=?",(req["ref_id"],))                           |
+                    |   180     today = shop_date(conn)                       |
+                    |   181     conn.execute("UPDATE cash_accounts SET balanc |
+                    |       (float(balance-amount),today,req["account"]))     |
+                    +---------------------------------------------------------+
+                    ValueError: Vendor cannot ship while an invoice remains    
+                    unpaid; purchase payment refused.                          
+                    Error calling tool 'fulfill_ticket_order'                  
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                 ... 9 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\serve |
+                    | r.py:113 in fulfill_ticket_order                        |
+                    |                                                         |
+                    |   110     """Resolve a merchandise ticket only when exa |
+                    |   111     price override has a valid stored decision. D |
+                    |   112     """                                           |
+                    | > 113     return operations.fulfill_ticket_order(ticket |
+                    |   114                                                   |
+                    |   115                                                   |
+                    |   116 @mcp.tool()                                       |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:247 in fulfill_ticket_order                    |
+                    |                                                         |
+                    |   244                 raise ValueError("Pricing changed |
+                    |   245         stock=one(conn,"SELECT * FROM inventory W |
+                    |       size=?",(t["sku"],t["size"]))                     |
+                    |   246         if stock["qty"]<t["qty"]:                 |
+                    | > 247             raise ValueError("Insufficient exact- |
+                    |       count.")                                          |
+                    |   248         conn.execute("UPDATE inventory SET qty=qt |
+                    |       size=?",(t["qty"],t["sku"],t["size"]))            |
+                    |   249         conn.execute("UPDATE tickets SET status=' |
+                    |   250         return {"ticket":one(conn,"SELECT * FROM  |
+                    |       id=?",(ticket_id,)),"inventory":one(conn,"SELECT  |
+                    |       size=?",(t["sku"],t["size"]))}                    |
+                    +---------------------------------------------------------+
+                    ValueError: Insufficient exact-size stock; proposed        
+                    restocks do not count.                                     
+[10/05/26 14:32:04] Error calling tool 'receive_purchase_order'                
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                 ... 9 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\serve |
+                    | r.py:137 in receive_purchase_order                      |
+                    |                                                         |
+                    |   134     """Human-only: attest actual received goods o |
+                    |   135     unpaid vendor invoices, or replay of a fully  |
+                    |   136     """                                           |
+                    | > 137     return                                        |
+                    |       operations.receive_purchase_order(purchase_order_ |
+                    |       cret)                                             |
+                    |   138                                                   |
+                    |   139                                                   |
+                    |   140 @mcp.tool()                                       |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:288 in receive_purchase_order                  |
+                    |                                                         |
+                    |   285     with connection(True) as conn:                |
+                    |   286         order=one(conn,"SELECT * FROM purchase_or |
+                    |       id=?",(purchase_order_id,))                       |
+                    |   287         if order["status"]!="paid" or not isinsta |
+                    |       isinstance(received_qty,bool) or received_qty<=0  |
+                    |       received_qty>order["qty"]-order["received_qty"]:  |
+                    | > 288             raise ValueError("Receipt must be a p |
+                    |       purchase order.")                                 |
+                    |   289         if conn.execute("SELECT 1 FROM invoices W |
+                    |       status='open'",(order["vendor_id"],)).fetchone(): |
+                    |   290             raise ValueError("Vendor cannot ship  |
+                    |   291         one(conn,"SELECT * FROM inventory WHERE s |
+                    |       size=?",(order["sku"],order["size"]))             |
+                    +---------------------------------------------------------+
+                    ValueError: Receipt must be a positive remaining quantity  
+                    on a paid purchase order.                                  
+                    Error calling tool 'receive_purchase_order'                
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                 ... 9 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\serve |
+                    | r.py:137 in receive_purchase_order                      |
+                    |                                                         |
+                    |   134     """Human-only: attest actual received goods o |
+                    |   135     unpaid vendor invoices, or replay of a fully  |
+                    |   136     """                                           |
+                    | > 137     return                                        |
+                    |       operations.receive_purchase_order(purchase_order_ |
+                    |       cret)                                             |
+                    |   138                                                   |
+                    |   139                                                   |
+                    |   140 @mcp.tool()                                       |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:288 in receive_purchase_order                  |
+                    |                                                         |
+                    |   285     with connection(True) as conn:                |
+                    |   286         order=one(conn,"SELECT * FROM purchase_or |
+                    |       id=?",(purchase_order_id,))                       |
+                    |   287         if order["status"]!="paid" or not isinsta |
+                    |       isinstance(received_qty,bool) or received_qty<=0  |
+                    |       received_qty>order["qty"]-order["received_qty"]:  |
+                    | > 288             raise ValueError("Receipt must be a p |
+                    |       purchase order.")                                 |
+                    |   289         if conn.execute("SELECT 1 FROM invoices W |
+                    |       status='open'",(order["vendor_id"],)).fetchone(): |
+                    |   290             raise ValueError("Vendor cannot ship  |
+                    |   291         one(conn,"SELECT * FROM inventory WHERE s |
+                    |       size=?",(order["sku"],order["size"]))             |
+                    +---------------------------------------------------------+
+                    ValueError: Receipt must be a positive remaining quantity  
+                    on a paid purchase order.                                  
+                    Error calling tool 'fulfill_ticket_order'                  
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:233 in fulfill_ticket_order                    |
+                    |                                                         |
+                    |   230                                                   |
+                    |   231 def fulfill_ticket_order(ticket_id: int):         |
+                    |   232     with connection(True) as conn:                |
+                    | > 233         t=ticket(conn,ticket_id)                  |
+                    |   234         if t["type"] not in ("customer_order","pr |
+                    |   235             raise ValueError("Ticket is not a mer |
+                    |   236         if not isinstance(t["qty"],int) or t["qty |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:62 in ticket                                   |
+                    |                                                         |
+                    |    59 def ticket(conn, ticket_id):                      |
+                    |    60     row = one(conn, "SELECT * FROM tickets WHERE  |
+                    |    61     if row["status"] != "open":                   |
+                    | >  62         raise ValueError("Ticket is not open.")   |
+                    |    63     return row                                    |
+                    |    64                                                   |
+                    |    65                                                   |
+                    +---------------------------------------------------------+
+                    ValueError: Ticket is not open.                            
+ok
+test_five_agents_all_twenty_directed_edges_and_append_audit (test_problem5.BusinessSafetyTests.test_five_agents_all_twenty_directed_edges_and_append_audit) ... ok
+test_insufficient_cash_rolls_back_everything (test_problem5.BusinessSafetyTests.test_insufficient_cash_rolls_back_everything) ... [10/05/26 14:34:10] Error calling tool 'execute_approved_payment'              
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:129 in execute_approved_payment                |
+                    |                                                         |
+                    |   126 def execute_approved_payment(request_id: int, app |
+                    |   127     require_human(approved_by, approval_secret)   |
+                    |   128     with connection(True) as conn:                |
+                    | > 129         return _execute_payment(conn, request_id) |
+                    |   130                                                   |
+                    |   131                                                   |
+                    |   132 def approve_and_pay(request_id: int, approved: bo |
+                    |       str):                                             |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:159 in _execute_payment                        |
+                    |                                                         |
+                    |   156     account = one(conn, "SELECT * FROM cash_accou |
+                    |   157     balance = money(account["balance"])           |
+                    |   158     if balance < amount:                          |
+                    | > 159         raise ValueError("Insufficient cash; paym |
+                    |   160     if req["kind"] == "invoice":                  |
+                    |   161         obligation = one(conn, "SELECT * FROM inv |
+                    |   162         if obligation["status"] != "open" or mone |
+                    |       obligation["due_date"] != req["obligation_date"]: |
+                    +---------------------------------------------------------+
+                    ValueError: Insufficient cash; payment refused.            
+ok
+test_live_cost_preflight_and_corrupt_audit (test_problem5.BusinessSafetyTests.test_live_cost_preflight_and_corrupt_audit) ... ok
+test_paid_reprint_invoice_can_fund_confirmed_goods_without_double_charge (test_problem5.BusinessSafetyTests.test_paid_reprint_invoice_can_fund_confirmed_goods_without_double_charge) ... ok
+test_stale_approval_and_rejection (test_problem5.BusinessSafetyTests.test_stale_approval_and_rejection) ... [10/05/26 14:34:11] Error calling tool 'execute_approved_payment'              
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:129 in execute_approved_payment                |
+                    |                                                         |
+                    |   126 def execute_approved_payment(request_id: int, app |
+                    |   127     require_human(approved_by, approval_secret)   |
+                    |   128     with connection(True) as conn:                |
+                    | > 129         return _execute_payment(conn, request_id) |
+                    |   130                                                   |
+                    |   131                                                   |
+                    |   132 def approve_and_pay(request_id: int, approved: bo |
+                    |       str):                                             |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:163 in _execute_payment                        |
+                    |                                                         |
+                    |   160     if req["kind"] == "invoice":                  |
+                    |   161         obligation = one(conn, "SELECT * FROM inv |
+                    |   162         if obligation["status"] != "open" or mone |
+                    |       obligation["due_date"] != req["obligation_date"]: |
+                    | > 163             raise ValueError("Invoice changed sin |
+                    |   164         conn.execute("UPDATE invoices SET status= |
+                    |   165     elif req["kind"] == "rent":                   |
+                    |   166         obligation = one(conn, "SELECT * FROM lea |
+                    +---------------------------------------------------------+
+                    ValueError: Invoice changed since approval or was already  
+                    paid.                                                      
+                    Error calling tool 'execute_approved_payment'              
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:129 in execute_approved_payment                |
+                    |                                                         |
+                    |   126 def execute_approved_payment(request_id: int, app |
+                    |   127     require_human(approved_by, approval_secret)   |
+                    |   128     with connection(True) as conn:                |
+                    | > 129         return _execute_payment(conn, request_id) |
+                    |   130                                                   |
+                    |   131                                                   |
+                    |   132 def approve_and_pay(request_id: int, approved: bo |
+                    |       str):                                             |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:153 in _execute_payment                        |
+                    |                                                         |
+                    |   150     if req["status"] == "paid":                   |
+                    |   151         return one(conn, "SELECT * FROM payments  |
+                    |   152     if req["status"] != "approved" or not req["ap |
+                    | > 153         raise PermissionError("Payment requires a |
+                    |   154     ticket(conn, req["ticket_id"])                |
+                    |   155     amount = money(req["amount"])                 |
+                    |   156     account = one(conn, "SELECT * FROM cash_accou |
+                    +---------------------------------------------------------+
+                    PermissionError: Payment requires a stored human approval. 
+ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 134.964s
+
+OK

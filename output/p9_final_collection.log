@@ -1,0 +1,45 @@
+
+
++-----------------------------------------------------------------------------+
+|                                                                             |
+|                                                                             |
+|                        \u2584\u2580\u2580 \u2584\u2580\u2588 \u2588\u2580\u2580 \u2580\u2588\u2580 \u2588\u2580\u2584\u2580\u2588 \u2588\u2580\u2580 \u2588\u2580\u2588                        |
+|                        \u2588\u2580  \u2588\u2580\u2588 \u2584\u2584\u2588  \u2588  \u2588 \u2580 \u2588 \u2588\u2584\u2584 \u2588\u2580\u2580                        |
+|                                                                             |
+|                                                                             |
+|                                                                             |
+|                               FastMCP 4.0.11                                |
+|                            https://gofastmcp.com                            |
+|                                                                             |
+|         \U0001f5a5  Server:      Campus Customs Ticket Investigation, 4.0.11         |
+|         \U0001f680 Deploy free: https://horizon.prefect.io                          |
+|                                                                             |
++-----------------------------------------------------------------------------+
+
+
+[10/05/26 16:31:25] INFO     Starting MCP server 'Campus       transport.py:242
+                             Customs Ticket Investigation'                     
+                             with transport 'stdio'                            
+{
+  "complete": false,
+  "statuses": [
+    [
+      101,
+      "resolved",
+      "resolved"
+    ],
+    [
+      102,
+      "resolved",
+      "resolved"
+    ],
+    [
+      103,
+      "open",
+      "awaiting_human"
+    ]
+  ],
+  "starting": "3400.0",
+  "ending": "160.0",
+  "audit_entries": 2915
+}

@@ -1,0 +1,13 @@
+p10 has the specific questions in the screenshot, log it:
+
+Fill the **Reflection** tab in `output/desk_tickets.html` using evidence from the actual ticket runs and Cash tab.
+
+Discuss:
+- How well the agents performed on each of tickets 101, 102, and 103
+- How each ticket's Actual behavior compared with its Expected plan
+- Which parts would have been simpler with one agent using tools, and why
+- Three new Campus Customs problems the current agents/tools could solve
+- Three problems they could not solve, including what new tools or agents would be needed
+
+Keep the reflection specific to this application and the actual ticket results rather than writing a generic AI discussion.
+

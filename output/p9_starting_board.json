@@ -1,0 +1,201 @@
+{
+  "reset": true,
+  "board": {
+    "desk": [
+      {
+        "date_today": "2026-08-31",
+        "notes": null
+      }
+    ],
+    "tickets": [
+      {
+        "id": 101,
+        "type": "customer_order",
+        "requester": "Tauhid Zaman",
+        "subject": "Bulldog tee",
+        "sku": "CC-TEE-WHITE",
+        "size": "S",
+        "qty": 1,
+        "lease_id": null,
+        "invoice_id": 501,
+        "status": "open",
+        "notes": "Needs a tee in size S.",
+        "created_at": "2026-08-31T09:15:00-04:00"
+      },
+      {
+        "id": 102,
+        "type": "rent_notice",
+        "requester": "Elm City Properties",
+        "subject": "Rent due",
+        "sku": null,
+        "size": null,
+        "qty": null,
+        "lease_id": 1,
+        "invoice_id": null,
+        "status": "open",
+        "notes": "Email: shop rent due in 2 days.",
+        "created_at": "2026-08-31T11:05:00-04:00"
+      },
+      {
+        "id": 103,
+        "type": "price_override",
+        "requester": "Yale AI Club",
+        "subject": "Bulk hoodie discount",
+        "sku": "CC-HOOD-NAVY",
+        "size": "M",
+        "qty": 20,
+        "lease_id": null,
+        "invoice_id": null,
+        "status": "open",
+        "notes": "Student org wants 20 hoodies, size M, asking for a bulk discount.",
+        "created_at": "2026-08-31T16:55:00-04:00"
+      }
+    ],
+    "inventory": [
+      {
+        "sku": "CC-HOOD-NAVY",
+        "name": "Basic Hoodie Big Yale",
+        "size": "S",
+        "qty": 4,
+        "location": "Aisle A"
+      },
+      {
+        "sku": "CC-HOOD-NAVY",
+        "name": "Basic Hoodie Big Yale",
+        "size": "M",
+        "qty": 8,
+        "location": "Aisle A"
+      },
+      {
+        "sku": "CC-HOOD-NAVY",
+        "name": "Basic Hoodie Big Yale",
+        "size": "L",
+        "qty": 14,
+        "location": "Aisle A"
+      },
+      {
+        "sku": "CC-HOOD-NAVY",
+        "name": "Basic Hoodie Big Yale",
+        "size": "XL",
+        "qty": 6,
+        "location": "Aisle A"
+      },
+      {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "qty": 0,
+        "location": "Aisle B"
+      },
+      {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "M",
+        "qty": 5,
+        "location": "Aisle B"
+      },
+      {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "L",
+        "qty": 3,
+        "location": "Aisle B"
+      },
+      {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "XL",
+        "qty": 2,
+        "location": "Aisle B"
+      },
+      {
+        "sku": "CC-HAT-BLUE",
+        "name": "Yale Cap",
+        "size": "OS",
+        "qty": 40,
+        "location": "Aisle C"
+      },
+      {
+        "sku": "CC-MUG-CREST",
+        "name": "Crest Mug",
+        "size": "OS",
+        "qty": 0,
+        "location": "Aisle D"
+      }
+    ],
+    "pricing": [
+      {
+        "sku": "CC-HOOD-NAVY",
+        "unit_cost": 22.0,
+        "list_price": 58.0
+      },
+      {
+        "sku": "CC-TEE-WHITE",
+        "unit_cost": 8.0,
+        "list_price": 28.0
+      },
+      {
+        "sku": "CC-HAT-BLUE",
+        "unit_cost": 6.0,
+        "list_price": 22.0
+      },
+      {
+        "sku": "CC-MUG-CREST",
+        "unit_cost": 3.5,
+        "list_price": 14.0
+      }
+    ],
+    "vendors": [
+      {
+        "id": 1,
+        "name": "Bulldog Print Co",
+        "specialty": "apparel reprint",
+        "lead_days": 5
+      },
+      {
+        "id": 2,
+        "name": "Elm City Gifts",
+        "specialty": "mugs and small goods",
+        "lead_days": 3
+      },
+      {
+        "id": 3,
+        "name": "QuickShip CT",
+        "specialty": "local courier",
+        "lead_days": 1
+      }
+    ],
+    "leases": [
+      {
+        "id": 1,
+        "space_name": "Chapel Street shop",
+        "landlord": "Elm City Properties",
+        "monthly_rent": 2400.0,
+        "next_due": "2026-09-02",
+        "notes": null
+      }
+    ],
+    "cash_accounts": [
+      {
+        "name": "checking",
+        "balance": 3400.0,
+        "date": "2026-08-31"
+      }
+    ],
+    "payments": [],
+    "invoices": [
+      {
+        "id": 501,
+        "vendor_id": 1,
+        "amount": 840.0,
+        "due_date": "2026-08-28",
+        "status": "open",
+        "description": "Rush reprint CC-TEE-WHITE S"
+      }
+    ],
+    "approval_requests": [],
+    "board_drafts": [],
+    "purchase_order_drafts": [],
+    "discount_decisions": []
+  }
+}

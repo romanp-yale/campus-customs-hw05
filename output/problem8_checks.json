@@ -1,0 +1,42 @@
+{
+  "problem": 8,
+  "frontend_tests": {
+    "passed": 5,
+    "coverage": [
+      "ticket selection",
+      "refused run stays open",
+      "human payment attestation and cash refresh",
+      "actual purchase quote and no cash debit",
+      "live MCP evidence, agent report, and stored resolution"
+    ]
+  },
+  "backend_tests": {
+    "passed": 4,
+    "log": "p8_backend_checks.log",
+    "includes": [
+      "dashboard snapshot",
+      "CORS localhost5173",
+      "offline audit filtering",
+      "approval/reset transaction safety"
+    ]
+  },
+  "typescript_and_production_build": "passed",
+  "browser_checks": {
+    "live_tickets": [
+      101,
+      102,
+      103
+    ],
+    "checking_balance": 3400,
+    "ticket_selection": "passed",
+    "mobile_css_viewport": 375,
+    "mobile_css_content_width": 375,
+    "screenshot": "dashboard-preview.jpg"
+  },
+  "paid_ai_calls": 0,
+  "database_sha256": {
+    "campus_customs.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a",
+    "campus_customs_new.db": "23686a90d698f7fa6f901a3f0a9774db9cbb31e13151c9e5717275f3321f360a"
+  },
+  "audit_entries_preserved": 1820
+}

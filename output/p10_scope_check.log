@@ -1,0 +1,6 @@
+test_selected_ticket_write_isolation (backend.tests.test_problem5.BusinessSafetyTests.test_selected_ticket_write_isolation) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.424s
+
+OK

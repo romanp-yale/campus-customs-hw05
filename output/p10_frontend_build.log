@@ -1,0 +1,13 @@
+
+> campus-customs-dashboard@1.0.0 build
+> tsc -b && vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1581 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:  0.30 kB
+dist/assets/index-D95kOPvM.css   18.79 kB │ gzip:  5.03 kB
+dist/assets/index-C1e_da6K.js   249.82 kB │ gzip: 78.55 kB
+✓ built in 4.80s

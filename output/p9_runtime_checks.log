@@ -1,0 +1,87 @@
+test_dashboard_snapshot_cors_and_test_history_filter (test_problem7.HTTPTests.test_dashboard_snapshot_cors_and_test_history_filter) ... ok
+test_payment_replay_rejection_cash_and_reset (test_problem7.HTTPTests.test_payment_replay_rejection_cash_and_reset) ... [10/05/26 15:02:55] Error calling tool 'execute_approved_payment'              
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:127 in execute_approved_payment                |
+                    |                                                         |
+                    |   124                                                   |
+                    |   125                                                   |
+                    |   126 def execute_approved_payment(request_id: int, app |
+                    | > 127     require_human(approved_by, approval_secret)   |
+                    |   128     with connection(True) as conn:                |
+                    |   129         return _execute_payment(conn, request_id) |
+                    |   130                                                   |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:111 in require_human                           |
+                    |                                                         |
+                    |   108 def require_human(approved_by: str, approval_secr |
+                    |   109     expected = os.getenv("CAMPUS_HUMAN_APPROVAL_K |
+                    |   110     if not expected or not hmac.compare_digest(ex |
+                    | > 111         raise PermissionError("Human approval cre |
+                    |   112     if not approved_by.strip() or len(approved_by |
+                    |   113         raise ValueError("A human approver name i |
+                    |   114                                                   |
+                    +---------------------------------------------------------+
+                    PermissionError: Human approval credential is invalid or   
+                    not configured.                                            
+ok
+test_purchase_and_failed_payment_transaction (test_problem7.HTTPTests.test_purchase_and_failed_payment_transaction) ... [10/05/26 15:02:56] Error calling tool 'approve_and_pay'                       
+                    +----------- Traceback (most recent call last) -----------+
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \server\server.py:1467 in call_tool                     |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp |
+                    | \tools\base.py:440 in _run                              |
+                    |                                                         |
+                    |                ... 10 frames hidden ...                 |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:145 in approve_and_pay                         |
+                    |                                                         |
+                    |   142                      ('approved' if approved else |
+                    |       request_id))                                      |
+                    |   143         if not approved:                          |
+                    |   144             return one(conn, "SELECT * FROM appro |
+                    |       (request_id,))                                    |
+                    | > 145         return _execute_payment(conn, request_id) |
+                    |   146                                                   |
+                    |   147                                                   |
+                    |   148 def _execute_payment(conn, request_id):           |
+                    |                                                         |
+                    | C:\Users\Roman\Documents\SOM                            |
+                    | Coursework\AI\Workspace\homework\hw-05\mcp_server\opera |
+                    | tions.py:159 in _execute_payment                        |
+                    |                                                         |
+                    |   156     account = one(conn, "SELECT * FROM cash_accou |
+                    |   157     balance = money(account["balance"])           |
+                    |   158     if balance < amount:                          |
+                    | > 159         raise ValueError("Insufficient cash; paym |
+                    |   160     if req["kind"] == "invoice":                  |
+                    |   161         obligation = one(conn, "SELECT * FROM inv |
+                    |   162         if obligation["status"] != "open" or mone |
+                    |       obligation["due_date"] != req["obligation_date"]: |
+                    +---------------------------------------------------------+
+                    ValueError: Insufficient cash; payment refused.            
+ok
+test_read_run_poll_activity_and_busy_reset (test_problem7.HTTPTests.test_read_run_poll_activity_and_busy_reset) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 9.518s
+
+OK

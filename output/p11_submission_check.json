@@ -1,0 +1,9 @@
+{
+  "staged_files_scanned": 116,
+  "local_secret_values_and_credential_patterns_absent": true,
+  "real_env_excluded": true,
+  "required_files_present": true,
+  "both_databases_included": true,
+  "original_hash_preserved": true,
+  "false_positive_review": "Embedded sk- substring inside opaque model response signature; not a credential token."
+}

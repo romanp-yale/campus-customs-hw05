@@ -1,0 +1,221 @@
+.[10/05/26 16:27:37] Error calling tool 'receive_purchase_order'                
+                    ┌─────────── Traceback (most recent call last) ───────────┐
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \server\server.py:1467 in call_tool                     │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \tools\base.py:440 in _run                              │
+                    │                                                         │
+                    │                 ... 9 frames hidden ...                 │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\serve │
+                    │ r.py:146 in receive_purchase_order                      │
+                    │                                                         │
+                    │   143 │   """Human-only: attest actual received goods o │
+                    │   144 │   unpaid vendor invoices, or replay of a fully  │
+                    │   145 │   """                                           │
+                    │ > 146 │   return                                        │
+                    │       operations.receive_purchase_order(purchase_order_ │
+                    │       cret,simulation_note)                             │
+                    │   147                                                   │
+                    │   148                                                   │
+                    │   149 @mcp.tool()                                       │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:318 in receive_purchase_order                  │
+                    │                                                         │
+                    │   315 │   with connection(True) as conn:                │
+                    │   316 │   │   order=one(conn,"SELECT * FROM purchase_or │
+                    │       id=?",(purchase_order_id,))                       │
+                    │   317 │   │   if order["status"]!="paid" or not isinsta │
+                    │       isinstance(received_qty,bool) or received_qty<=0  │
+                    │       received_qty>order["qty"]-order["received_qty"]:  │
+                    │ > 318 │   │   │   raise ValueError("Receipt must be a p │
+                    │       purchase order.")                                 │
+                    │   319 │   │   if conn.execute("SELECT 1 FROM invoices W │
+                    │       status='open'",(order["vendor_id"],)).fetchone(): │
+                    │   320 │   │   │   raise ValueError("Vendor cannot ship  │
+                    │   321 │   │   one(conn,"SELECT * FROM inventory WHERE s │
+                    │       size=?",(order["sku"],order["size"]))             │
+                    └─────────────────────────────────────────────────────────┘
+                    ValueError: Receipt must be a positive remaining quantity  
+                    on a paid purchase order.                                  
+                    Error calling tool 'receive_purchase_order'                
+                    ┌─────────── Traceback (most recent call last) ───────────┐
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \server\server.py:1467 in call_tool                     │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \tools\base.py:440 in _run                              │
+                    │                                                         │
+                    │                 ... 9 frames hidden ...                 │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\serve │
+                    │ r.py:146 in receive_purchase_order                      │
+                    │                                                         │
+                    │   143 │   """Human-only: attest actual received goods o │
+                    │   144 │   unpaid vendor invoices, or replay of a fully  │
+                    │   145 │   """                                           │
+                    │ > 146 │   return                                        │
+                    │       operations.receive_purchase_order(purchase_order_ │
+                    │       cret,simulation_note)                             │
+                    │   147                                                   │
+                    │   148                                                   │
+                    │   149 @mcp.tool()                                       │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:318 in receive_purchase_order                  │
+                    │                                                         │
+                    │   315 │   with connection(True) as conn:                │
+                    │   316 │   │   order=one(conn,"SELECT * FROM purchase_or │
+                    │       id=?",(purchase_order_id,))                       │
+                    │   317 │   │   if order["status"]!="paid" or not isinsta │
+                    │       isinstance(received_qty,bool) or received_qty<=0  │
+                    │       received_qty>order["qty"]-order["received_qty"]:  │
+                    │ > 318 │   │   │   raise ValueError("Receipt must be a p │
+                    │       purchase order.")                                 │
+                    │   319 │   │   if conn.execute("SELECT 1 FROM invoices W │
+                    │       status='open'",(order["vendor_id"],)).fetchone(): │
+                    │   320 │   │   │   raise ValueError("Vendor cannot ship  │
+                    │   321 │   │   one(conn,"SELECT * FROM inventory WHERE s │
+                    │       size=?",(order["sku"],order["size"]))             │
+                    └─────────────────────────────────────────────────────────┘
+                    ValueError: Receipt must be a positive remaining quantity  
+                    on a paid purchase order.                                  
+                    Error calling tool 'receive_purchase_order'                
+                    ┌─────────── Traceback (most recent call last) ───────────┐
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \server\server.py:1467 in call_tool                     │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \tools\base.py:440 in _run                              │
+                    │                                                         │
+                    │                 ... 9 frames hidden ...                 │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\serve │
+                    │ r.py:146 in receive_purchase_order                      │
+                    │                                                         │
+                    │   143 │   """Human-only: attest actual received goods o │
+                    │   144 │   unpaid vendor invoices, or replay of a fully  │
+                    │   145 │   """                                           │
+                    │ > 146 │   return                                        │
+                    │       operations.receive_purchase_order(purchase_order_ │
+                    │       cret,simulation_note)                             │
+                    │   147                                                   │
+                    │   148                                                   │
+                    │   149 @mcp.tool()                                       │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:318 in receive_purchase_order                  │
+                    │                                                         │
+                    │   315 │   with connection(True) as conn:                │
+                    │   316 │   │   order=one(conn,"SELECT * FROM purchase_or │
+                    │       id=?",(purchase_order_id,))                       │
+                    │   317 │   │   if order["status"]!="paid" or not isinsta │
+                    │       isinstance(received_qty,bool) or received_qty<=0  │
+                    │       received_qty>order["qty"]-order["received_qty"]:  │
+                    │ > 318 │   │   │   raise ValueError("Receipt must be a p │
+                    │       purchase order.")                                 │
+                    │   319 │   │   if conn.execute("SELECT 1 FROM invoices W │
+                    │       status='open'",(order["vendor_id"],)).fetchone(): │
+                    │   320 │   │   │   raise ValueError("Vendor cannot ship  │
+                    │   321 │   │   one(conn,"SELECT * FROM inventory WHERE s │
+                    │       size=?",(order["sku"],order["size"]))             │
+                    └─────────────────────────────────────────────────────────┘
+                    ValueError: Receipt must be a positive remaining quantity  
+                    on a paid purchase order.                                  
+.                    Error calling tool 'execute_approved_payment'              
+                    ┌─────────── Traceback (most recent call last) ───────────┐
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \server\server.py:1467 in call_tool                     │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \tools\base.py:440 in _run                              │
+                    │                                                         │
+                    │                ... 10 frames hidden ...                 │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:129 in execute_approved_payment                │
+                    │                                                         │
+                    │   126                                                   │
+                    │   127                                                   │
+                    │   128 def execute_approved_payment(request_id: int, app │
+                    │ > 129 │   require_human(approved_by, approval_secret)   │
+                    │   130 │   with connection(True) as conn:                │
+                    │   131 │   │   return _execute_payment(conn, request_id) │
+                    │   132                                                   │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:113 in require_human                           │
+                    │                                                         │
+                    │   110 def require_human(approved_by: str, approval_secr │
+                    │   111 │   expected = os.getenv("CAMPUS_HUMAN_APPROVAL_K │
+                    │   112 │   if not expected or not hmac.compare_digest(ex │
+                    │ > 113 │   │   raise PermissionError("Human approval cre │
+                    │   114 │   if not approved_by.strip() or len(approved_by │
+                    │   115 │   │   raise ValueError("A human approver name i │
+                    │   116                                                   │
+                    └─────────────────────────────────────────────────────────┘
+                    PermissionError: Human approval credential is invalid or   
+                    not configured.                                            
+.[10/05/26 16:27:38] Error calling tool 'approve_and_pay'                       
+                    ┌─────────── Traceback (most recent call last) ───────────┐
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \server\server.py:1467 in call_tool                     │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\.venv\Lib\site-packages\fastmcp │
+                    │ \tools\base.py:440 in _run                              │
+                    │                                                         │
+                    │                ... 10 frames hidden ...                 │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:147 in approve_and_pay                         │
+                    │                                                         │
+                    │   144 │   │   │   │   │    ('approved' if approved else │
+                    │       request_id))                                      │
+                    │   145 │   │   if not approved:                          │
+                    │   146 │   │   │   return one(conn, "SELECT * FROM appro │
+                    │       (request_id,))                                    │
+                    │ > 147 │   │   return _execute_payment(conn, request_id) │
+                    │   148                                                   │
+                    │   149                                                   │
+                    │   150 def _execute_payment(conn, request_id):           │
+                    │                                                         │
+                    │ C:\Users\Roman\Documents\SOM                            │
+                    │ Coursework\AI\Workspace\homework\hw-05\mcp_server\opera │
+                    │ tions.py:161 in _execute_payment                        │
+                    │                                                         │
+                    │   158 │   account = one(conn, "SELECT * FROM cash_accou │
+                    │   159 │   balance = money(account["balance"])           │
+                    │   160 │   if balance < amount:                          │
+                    │ > 161 │   │   raise ValueError("Insufficient cash; paym │
+                    │   162 │   if req["kind"] == "invoice":                  │
+                    │   163 │   │   obligation = one(conn, "SELECT * FROM inv │
+                    │   164 │   │   if obligation["status"] != "open" or mone │
+                    │       obligation["due_date"] != req["obligation_date"]: │
+                    └─────────────────────────────────────────────────────────┘
+                    ValueError: Insufficient cash; payment refused.            
+..
+----------------------------------------------------------------------
+Ran 5 tests in 4.318s
+
+OK

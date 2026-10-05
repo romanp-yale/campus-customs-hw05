@@ -1,0 +1,56 @@
+{
+  "verified_at_utc": "2026-10-05T16:13:15.741169-04:00",
+  "paid_model_calls_during_review": 0,
+  "business_and_agent_tests": {
+    "passed": true,
+    "count": 10,
+    "evidence": "problem5_checks.json"
+  },
+  "backend_tests": {
+    "passed": true,
+    "count": 5,
+    "evidence": "p10_backend_checks.log"
+  },
+  "frontend_tests": {
+    "passed": true,
+    "count": 6,
+    "evidence": "p10_frontend_checks.log"
+  },
+  "typescript_and_production_build": {
+    "passed": true,
+    "evidence": "p10_frontend_build.log"
+  },
+  "mcp_context_smoke": {
+    "passed": true,
+    "count": 3,
+    "evidence": "mcp_smoke.json"
+  },
+  "original_database_preserved": true,
+  "actual_shop_balance": 3400,
+  "all_tickets_resolved": false,
+  "remaining_blockers": [
+    "Human approval of invoice $840 and rent $2400",
+    "Human tee supplier quote, invoice coverage, and physical receipt",
+    "Hoodie shortage of 12; $264 planning cost exceeds projected $160 cash by $104",
+    "Resolved dashboard screenshots cannot exist until tickets actually resolve"
+  ],
+  "fixes": [
+    "Dashboard and API for human stock receipt",
+    "Exact read/draft MCP argument instructions",
+    "Assigned-ticket write guard",
+    "Boss price-before-draft instruction",
+    "Current tool counts, receipt docs, and report header",
+    "UTF-8 repair of mixed-encoded source/docs"
+  ],
+  "historical_evidence_changed": false,
+  "selected_ticket_scope_test": {
+    "count": 1,
+    "evidence": "p10_scope_check.log",
+    "passed": true
+  },
+  "live_api": {
+    "receipt_route_loaded": true,
+    "stale_workers_replaced": true,
+    "evidence": "p10_live_api.json"
+  }
+}
